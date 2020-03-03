@@ -29,7 +29,7 @@ namespace SecurePayWeb.Config
             Settings.SearchEngine = searchengine.Value.ToString();
             Settings.AUT = aut.Value.ToString();
             Settings.Timeout = Int32.Parse(timeout.Value);
-            //Settings.BrowserType 
+            //Settings.BrowserType = (BaseClass.BrowserType)browser;
 
         }
 

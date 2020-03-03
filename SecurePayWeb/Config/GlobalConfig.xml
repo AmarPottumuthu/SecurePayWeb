@@ -6,6 +6,5 @@
     <!-- Possible flag Chrome,Firefox, IE-->
     <Browser>Chrome</Browser>
     <Timeout>20</Timeout>
-    <ApplicationDb>Data Source=Server; Initial Catalog=Employee; Integrated Security=True</ApplicationDb>
   </RunSettings>
 </SecurePayWeb>
