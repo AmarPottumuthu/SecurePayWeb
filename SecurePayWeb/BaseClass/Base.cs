@@ -1,14 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.PageObjects;
-using SecurePayWeb.Config;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
 namespace SecurePayWeb.BaseClass
@@ -27,13 +18,13 @@ namespace SecurePayWeb.BaseClass
                 ScenarioContext.Current["currentPage"] = value;
             }
         }
-        private IWebDriver _driver { get; set; }
+        private IWebDriver Driver { get; set; }
 
         protected TPage GetInstance<TPage>() where TPage : BasePage, new()
         {
             TPage pageInstance = new TPage()
             {
-                _driver = DriverContext.Driver
+                Driver = DriverContext.Driver
             };
 
             PageFactory.InitElements(DriverContext.Driver, pageInstance);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SecurePayWeb.Config;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace SecurePayWeb.BaseClass
     [Binding]
     public class HookInitialize : TestInitializeHook
     {
-        public HookInitialize() : base(BrowserType.Chrome)
+        public HookInitialize() : base(Settings.BrowserType)
         {
             InitializeSettings();
         }
@@ -20,6 +21,8 @@ namespace SecurePayWeb.BaseClass
         {
             HookInitialize init = new HookInitialize();
         }
+
+        //Commented this so that the test can be viewed before it closes
         /*
         [AfterFeature]
         public static void TearDown()

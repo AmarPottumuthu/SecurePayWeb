@@ -3,37 +3,41 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using SecurePayWeb.Config;
 using System;
+using OpenQA.Selenium.Remote;
 
 namespace SecurePayWeb.BaseClass
 {
     public abstract class TestInitializeHook : Base
     {
-        public readonly BrowserType Browser;
-
-        public TestInitializeHook(BrowserType browser)
-        {
-            Browser = browser;
-        }
+        public readonly BrowserTypes Browser;
 
         public void InitializeSettings()
         {
             ConfigReader.SetFrameworkSettings();
             OpenBrowser(Browser);
         }
-
-        private void OpenBrowser(BrowserType browserType)
+        
+        public TestInitializeHook(BrowserTypes browser)
         {
-            switch (browserType)
+            Browser = Settings.BrowserType;
+        }
+
+        [Obsolete]
+        private void OpenBrowser(BrowserTypes browserType)
+        {
+            switch (Settings.BrowserType)
             {
-                case BrowserType.InternetExplorer:
-                    DriverContext.Driver = new InternetExplorerDriver();
+                case BrowserTypes.InternetExplorer:
+                    var options = new InternetExplorerOptions();
+                    options.IntroduceInstabilityByIgnoringProtectedModeSettings = true; 
+                    DriverContext.Driver = new InternetExplorerDriver(); 
                     DriverContext.Browser = new Browser(DriverContext.Driver);
                     break;
-                case BrowserType.Firefox:
+                case BrowserTypes.Firefox:
                     DriverContext.Driver = new FirefoxDriver();
                     DriverContext.Browser = new Browser(DriverContext.Driver);
                     break;
-                case BrowserType.Chrome:
+                case BrowserTypes.Chrome:
                     DriverContext.Driver = new ChromeDriver();
                     DriverContext.Browser = new Browser(DriverContext.Driver);
                     break;

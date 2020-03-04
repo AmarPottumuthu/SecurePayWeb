@@ -9,14 +9,14 @@ namespace SecurePayWeb.BaseClass
 {
     public class Browser
     {
-        private readonly IWebDriver _driver;
+        private readonly IWebDriver Driver;
 
         public Browser(IWebDriver driver)
         {
-            _driver = driver;
+            Driver = driver;
         }
 
-        public BrowserType Type { get; set; }
+        //public BrowserTypes Type { get; set; }
 
         public void GotoUrl(string url)
         {
@@ -24,10 +24,10 @@ namespace SecurePayWeb.BaseClass
         }
     }
 
-    public enum BrowserType
+    public enum BrowserTypes
     {
+        Chrome,
         InternetExplorer,
-        Firefox,
-        Chrome
+        Firefox
     }
 }

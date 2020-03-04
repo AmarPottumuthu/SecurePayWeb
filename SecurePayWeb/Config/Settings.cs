@@ -11,7 +11,7 @@ namespace SecurePayWeb.Config
 
         public static string AUT { get; set; }
 
-        public static BrowserType BrowserType { get; set; }
+        public static BrowserTypes BrowserType { get; set; }
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml.XPath;
 using System.IO;
+using SecurePayWeb.BaseClass;
 
 namespace SecurePayWeb.Config
 {
@@ -11,7 +12,8 @@ namespace SecurePayWeb.Config
             XPathItem searchengine;
             XPathItem aut;
             XPathItem timeout;
-            //XPathItem browser;
+            XPathItem browser;
+            string strBrowser;
 
             string strFilename = "C:\\SecurePayWeb\\SecurePayWeb\\Config\\GlobalConfig.xml";
             //string strFilename = Environment.CurrentDirectory.ToString() + "\\Config\\GlobalConfig.xml";
@@ -23,13 +25,14 @@ namespace SecurePayWeb.Config
             searchengine = navigator.SelectSingleNode("SecurePayWeb/RunSettings/SearchEngine");
             aut = navigator.SelectSingleNode("SecurePayWeb/RunSettings/AUT");
             timeout = navigator.SelectSingleNode("SecurePayWeb/RunSettings/Timeout");
-            //browser = navigator.SelectSingleNode("SecurePayWeb/RunSettings/Browser");
+            browser = navigator.SelectSingleNode("SecurePayWeb/RunSettings/Browser");
 
+            strBrowser = browser.Value.ToString();
             //Set XML Details in the property to be used accross framework
             Settings.SearchEngine = searchengine.Value.ToString();
             Settings.AUT = aut.Value.ToString();
             Settings.Timeout = Int32.Parse(timeout.Value);
-            //Settings.BrowserType = (BaseClass.BrowserType)browser;
+            Settings.BrowserType = (BrowserTypes)Enum.Parse(typeof(BrowserTypes), strBrowser);
 
         }
 

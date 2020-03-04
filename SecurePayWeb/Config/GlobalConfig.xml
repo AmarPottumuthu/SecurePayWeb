@@ -3,7 +3,7 @@
   <RunSettings>
     <AUT>https://www.securepay.com.au/</AUT>
     <SearchEngine>https://www.google.com.au/</SearchEngine>
-    <!-- Possible flag Chrome,Firefox, IE-->
+    <!-- Possible flag Chrome,Firefox, InternetExplorer-->
     <Browser>Chrome</Browser>
     <Timeout>20</Timeout>
   </RunSettings>

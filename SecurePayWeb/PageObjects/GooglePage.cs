@@ -19,8 +19,8 @@ namespace SecurePayWeb.PageObjects
         internal ResultsPage GoogleSearch(string text)
         {
             googleSearchTextBox.SendKeys(text);
-            WebDriverExtensions.WaitForElement(DriverContext.Driver, googleSearchButton, 30);
-            googleSearchButton.Click();
+            WebDriverExtensions.WaitForElement(DriverContext.Driver, googleSearchButton, 10);
+            googleSearchButton.Submit();
             return GetInstance<ResultsPage>();
         }
         #endregion
